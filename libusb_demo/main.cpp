@@ -1,8 +1,8 @@
-#include "libusb.h"
 #include <cstdio>
 #include <cassert>
 #include <cstdlib>
 #include <iostream>
+#include "libusb.h"
 
 #define MAX_BUF_SZ  256
 
@@ -50,6 +50,8 @@ int main(int argc, char *argv[])
         printf("%s\t", buffer);
         libusb_get_string_descriptor_ascii(handle, desc.iProduct, buffer, MAX_BUF_SZ);
         printf("%s\n", buffer);
+
+        libusb_close(handle);
     }
 
     // free devices
